@@ -786,38 +786,44 @@
       });
 
       checkBtn.addEventListener("click", () => {
-        openModal();
+        // COMMENTED OUT: All loading/checking logic
+        // openModal();
 
-        const steps = [
-          { text: "Checking availability…", duration: 1500 },
-          { text: `Verifying ${selectedValue} slot…`, duration: 2000 },
-          { text: "Searching for best subscription page…", duration: 4000 },
-          { text: "Found! Preparing your offer…", duration: 1500 },
-          { text: "Redirecting to verified subscription page…", duration: 1500 }
-        ];
+        // const steps = [
+        //   { text: "Checking availability…", duration: 1500 },
+        //   { text: `Verifying ${selectedValue} slot…`, duration: 2000 },
+        //   { text: "Searching for best subscription page…", duration: 4000 },
+        //   { text: "Found! Preparing your offer…", duration: 1500 },
+        //   { text: "Redirecting to verified subscription page…", duration: 1500 }
+        // ];
 
-        let i = 0;
-        stepText.innerHTML = `${steps[i].text}<small>Please wait. Do not refresh.</small>`;
+        // let i = 0;
+        // stepText.innerHTML = `${steps[i].text}<small>Please wait. Do not refresh.</small>`;
 
-        function showNextStep() {
-          i++;
-          if (i >= steps.length) return;
-          stepText.innerHTML = `${steps[i].text}<small>Please wait. Do not refresh.</small>`;
-          if (i < steps.length - 1) {
-            setTimeout(showNextStep, steps[i].duration);
-          }
-        }
+        // function showNextStep() {
+        //   i++;
+        //   if (i >= steps.length) return;
+        //   stepText.innerHTML = `${steps[i].text}<small>Please wait. Do not refresh.</small>`;
+        //   if (i < steps.length - 1) {
+        //     setTimeout(showNextStep, steps[i].duration);
+        //   }
+        // }
 
-        setTimeout(showNextStep, steps[0].duration);
+        // setTimeout(showNextStep, steps[0].duration);
 
-        // Slight delay to feel “system-like”, then redirect.
-        redirectTimer = setTimeout(() => {
-          // Pass selected option as a query param (optional, harmless)
-          const url = new URL(CPA_LINK);
-          url.searchParams.set("pkg", selectedValue);
-          window.location.href = url.toString();
-        }, 12500);
+        // COMMENTED OUT: Delayed redirect
+        // redirectTimer = setTimeout(() => {
+        //   const url = new URL(CPA_LINK);
+        //   url.searchParams.set("pkg", selectedValue);
+        //   window.location.href = url.toString();
+        // }, 12500);
+
+        // DIRECT REDIRECT - No loading, no delay
+        const url = new URL(CPA_LINK);
+        url.searchParams.set("pkg", selectedValue);
+        window.location.href = url.toString();
       });
+
     </script>
   </body>
 </html>
